@@ -1,0 +1,62 @@
+# 현재 프로젝트 진행 중입니다.
+# League of Legends 게임 전적 검색 사이트
+
+- 게임 : [League of legends](https://kr.leagueoflegends.com/ko-kr/)
+- API 제공 : [Riot Developer Portal](https://developer.riotgames.com/)
+- 목표
+    > 직접 서비스를 운영하면서 대용량 트래픽을 처리하고, 서비스를 개선해나아가는 과정을 통해 실력있는 개발자가 되고 싶다.
+    
+  - 현재 리그오브레전드 전적검색 사이트는 아래와 같다. (사이트 옆 숫자는 Alexa 랭크)
+    - [op.gg](https://op.gg) : 267
+    - [fow.kr](https://fow.kr) : 9,094
+    - [poro.gg](https://poro.gg) : 44,902
+    - [your.gg](https://your.gg) : 66,948
+  - fow.kr의 경우 최근 몇년 동안 거의 변함없는 UI, 반응형 웹이 아닌 단점이 있는데도 많은 사용자가 이용하고 있다.  
+  - 기존에 학습한 내용들을 적용하며 fow를 대체하여 가볍고 기능에 충실한 사이트를 만든다.
+- - -
+- 기술 스택
+  - 프론트엔드
+    - Vue
+    - Thymeleaf - 스프링 뷰 템플릿 엔진
+    - Bootstrap(반응형 웹)
+  - 백엔드
+    - Spring Boot
+    - Spring JPA
+    - Spring Security
+  - DB
+    - PostgreSQL
+  - 인프라
+    - AWS(EC2/RDS/S3)
+    - Docker를 통한 배포
+    - CI/CD
+  - 기타
+    - XSS 방어 - Naver Lucy servlet filter 
+
+- - -
+- 기능
+  - 회원
+    - 기본 가입
+    - 페이스북, 구글, 네이버, 카카오 가입
+  - 전적검색
+    - 시즌별통계
+    - 랭킹 정보(솔로 랭킹/ 팀 랭크)
+    - 최근 전적
+    - 진행 중인 게임 정보 + 관전
+  - 최근 검색 유저 보기/삭제
+  - 유저 즐겨찾기 / 삭제
+  - 게시판
+    - 동영상/사진첨부가능 
+    - 추천/비추천
+    - 신고
+  - 관전하기
+    - 프로게이머
+    - 랭커/장인
+  - ON-AIR
+    - 현재 방송중인 리그오브레전드 스트리머 정보(트위치, 아프리카, Youtube 등)
+  - 현재 시즌 종합 랭킹 순위 보기
+  - 챔피언 정보 보기
+    - 기본 스탯
+    - 카운터픽
+    - 유저 간단한 팁 남기기
+    - 룬/아이템/스펠(모스트)/스킬트리 추천(각 라인별)
+    - 현재 라인별 꿀챔프(티어 정보)
