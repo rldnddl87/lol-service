@@ -1,4 +1,4 @@
-package me.giung.springboot.config;
+package me.giung.springboot.appConfig;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Configuration;
 import lombok.Getter;
 import lombok.Setter;
 
-@ConfigurationProperties("riot")
 @Getter
 @Setter
+@ConfigurationProperties("riot")
 @Configuration
 public class RiotProperties {
 
