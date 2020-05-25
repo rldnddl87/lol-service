@@ -8,3 +8,8 @@ spring:
   h2:
     console:
       enabled: true
+
+  codec:
+    max-in-memory-size: 10MB
+          
+    

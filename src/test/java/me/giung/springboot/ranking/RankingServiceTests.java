@@ -34,7 +34,7 @@ public class RankingServiceTests {
     RankingService rankingService;
 
     @Autowired
-    UrlGenerater urlGenerater;
+    RankingUrlGenerator urlGenerator;
 
     @Autowired
     LeagueListRepository leagueListRepository;
@@ -43,7 +43,7 @@ public class RankingServiceTests {
     @Test
     public void saveChallengerRankingTest() throws ClientProtocolException, IOException {
 
-        String baseUrl = BaseUrl.BASE_KOR.getValue() + "/" + urlGenerater.generateRankingApiUrlForChallenger();
+        String baseUrl = BaseUrl.BASE_KOR.getValue() + "/" + urlGenerator.generateRankingApiUrlForMaster();
 
         // given
         HttpUriRequest request = new HttpGet(baseUrl);

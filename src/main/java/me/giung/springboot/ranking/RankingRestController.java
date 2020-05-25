@@ -14,13 +14,33 @@ public class RankingRestController {
 
     RankingService rankingService;
 
-    @GetMapping("/get")
+    @GetMapping("/save1")
     public void get() {
         rankingService.saveChallengerRanking();
     }
 
-    @GetMapping("/find")
+    @GetMapping("/save2")
+    public void get2() {
+        rankingService.saveGrandMasterRanking();
+    }
+
+    @GetMapping("/save3")
+    public void get3() {
+        rankingService.saveMasterRanking();
+    }
+
+    @GetMapping("/find1")
     public List<LeagueItemDTO> find() {
         return rankingService.getChallengerRanking();
+    }
+
+    @GetMapping("/find2")
+    public List<LeagueItemDTO> find2() {
+        return rankingService.getGrandMasterRanking();
+    }
+
+    @GetMapping("/find3")
+    public List<LeagueItemDTO> find3() {
+        return rankingService.getMasterRanking();
     }
 }

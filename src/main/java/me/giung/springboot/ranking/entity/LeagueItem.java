@@ -19,7 +19,7 @@ import me.giung.springboot.enums.DivisionType;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class LeagueItem extends BaseTimeEntity {
 
     @Id

@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
 public class UrlGeneraterTests {
 
     @Autowired
-    UrlGenerater urlGenerator;
+    RankingUrlGenerator urlGenerator;
 
     @Test
     public void generateRankingApiUrlForChallengerTest() {

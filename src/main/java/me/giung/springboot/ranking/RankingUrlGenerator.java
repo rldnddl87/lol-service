@@ -9,10 +9,22 @@ import me.giung.springboot.enums.QueueType;
 import me.giung.springboot.enums.RankingUrl;
 
 @Service
-public class UrlGenerater {
+public class RankingUrlGenerator {
 
-    /// lol/league/v4/challengerleagues/by-queue/{queue}
+    /// /lol/league/v4/challengerleagues/by-queue/{queue}
     public String generateRankingApiUrlForChallenger() {
+        return getUrlByTier(RankingUrl.CHALLENGER_LEAGUE);
+    }
+
+    public String generateRankingApiUrlForGrandMaster() {
+        return getUrlByTier(RankingUrl.GRANDMASTER_LEAGUE);
+    }
+
+    public String generateRankingApiUrlForMaster() {
+        return getUrlByTier(RankingUrl.MASTER_LEAGUE);
+    }
+
+    public String getUrlByTier(RankingUrl rankingUrl) {
         StringBuilder sb = new StringBuilder();
 
         sb.append("/");
@@ -22,25 +34,11 @@ public class UrlGenerater {
         sb.append("/");
         sb.append(Version.V4.getValue());
         sb.append("/");
-        sb.append(RankingUrl.CHALLENGER_LEAGUE.getValue());
+        sb.append(rankingUrl.getValue());
         sb.append("/");
         sb.append(QueueType.RANKED_SOLO_5X5.getValue());
 
         return sb.toString();
-    }
-
-    public String generateRankingApiUrlForGrandMaster() {
-
-        return null;
-    }
-
-    public String generateRankingApiUrlForMaster() {
-
-        return null;
-    }
-
-    public String generateRankingApiUrlForDiamond() {
-        return null;
     }
 
 }

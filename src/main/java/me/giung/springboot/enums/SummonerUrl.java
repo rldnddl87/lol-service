@@ -2,14 +2,13 @@ package me.giung.springboot.enums;
 
 import me.giung.springboot.enums.ifs.EnumModel;
 
-public enum RankingUrl implements EnumModel {
-    //
-    CHALLENGER_LEAGUE("challengerleagues/by-queue"), GRANDMASTER_LEAGUE("grandmasterleagues/by-queue"),
-    MASTER_LEAGUE("masterleagues/by-queue"), ENTRIES("entries");
+public enum SummonerUrl implements EnumModel {
+    /// lol/summoner/v4/summoners/by-name/{summonerName}
+    BY_NAME("by-name"), SUMMONER("summoner"), SUMMONERS("summoners"), BY_SUMMONER("by-summoner");
 
     private String value;
 
-    RankingUrl(String value) {
+    SummonerUrl(String value) {
         this.value = value;
     }
 
@@ -22,4 +21,5 @@ public enum RankingUrl implements EnumModel {
     public String getValue() {
         return value;
     }
+
 }

@@ -28,8 +28,10 @@ dependencies {
 	}
 	compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.12'
 
-	 testImplementation('junit:junit:4.13')
-	 testImplementation('org.junit.platform:junit-platform-launcher:1.5.2')
+	testImplementation('junit:junit:4.13')
+	testCompile group: 'org.junit.platform', name: 'junit-platform-console-standalone', version: '1.6.0'
+
+	 
 }
 
 test {

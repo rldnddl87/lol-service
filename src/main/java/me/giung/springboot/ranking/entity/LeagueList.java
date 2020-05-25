@@ -23,7 +23,7 @@ import me.giung.springboot.enums.QueueType;
 import me.giung.springboot.enums.TierType;
 
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 public class LeagueList extends BaseTimeEntity {
 

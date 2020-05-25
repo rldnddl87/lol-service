@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import lombok.AllArgsConstructor;
-import me.giung.springboot.appConfig.RiotProperties;
 import me.giung.springboot.enums.TierType;
 import me.giung.springboot.ranking.dto.LeagueItemDTO;
 import me.giung.springboot.ranking.dto.LeagueListDTO;
@@ -22,9 +21,7 @@ import reactor.core.publisher.Mono;
 @AllArgsConstructor
 public class RankingService {
 
-    UrlGenerater urlGenerater;
-
-    RiotProperties riotProperties;
+    RankingUrlGenerator urlGenerator;
 
     WebClient.Builder webClientBuilder;
 
@@ -33,22 +30,42 @@ public class RankingService {
     // 추후에 배치작업으로 빼야한다.
     // Riot API를 통해 챌린저 랭커들 목록을 가져온다음 DB에 저장한다.
     public void saveChallengerRanking() {
-        WebClient client = webClientBuilder.build();
-        LeagueListDTO leagueListDTO;
-
-        Mono<LeagueListDTO> result = client.get().uri(urlGenerater.generateRankingApiUrlForChallenger()).retrieve()
-                .bodyToMono(LeagueListDTO.class);
-
-        leagueListDTO = result.block();
-
-        leagueListRepository.save(leagueListDTO.toEntity());
-
+        saveRanking(urlGenerator.generateRankingApiUrlForChallenger());
     }
 
-    // 저장된 랭킹을 가져온다.
-    public List<LeagueItemDTO> getChallengerRanking() {
+    public void saveGrandMasterRanking() {
+        saveRanking(urlGenerator.generateRankingApiUrlForGrandMaster());
+    }
 
-        List<LeagueList> leagueList = leagueListRepository.findByTier(TierType.CHALLENGER);
+    public void saveMasterRanking() {
+        saveRanking(urlGenerator.generateRankingApiUrlForMaster());
+    }
+
+    public void saveRanking(String url) {
+        WebClient client = webClientBuilder.build();
+
+        Mono<LeagueListDTO> result = client.get().uri(url).retrieve().bodyToMono(LeagueListDTO.class);
+
+        LeagueListDTO leagueListDTO = result.block();
+
+        leagueListRepository.save(leagueListDTO.toEntity());
+    }
+
+    public List<LeagueItemDTO> getChallengerRanking() {
+        return getRanking(TierType.CHALLENGER);
+    }
+
+    public List<LeagueItemDTO> getGrandMasterRanking() {
+        return getRanking(TierType.GRANDMASTER);
+    }
+
+    public List<LeagueItemDTO> getMasterRanking() {
+        return getRanking(TierType.MASTER);
+    }
+
+    public List<LeagueItemDTO> getRanking(TierType tierType) {
+
+        List<LeagueList> leagueList = leagueListRepository.findByTier(tierType);
 
         LeagueList challengerLeagueList = leagueList.get(0);
 
